@@ -24,5 +24,17 @@ app.post('/addUser',(req,rest)=>{
     
 })
 
+//Get employee data
+app.get('/getUsers',(req,rest)=>{
+    const sql="SELECT * FROM `employeedata`";
+    connection.query(sql,(error,result)=>{
+        if(error){
+            console.log(error);
+        }else{
+            rest.send(result);
+        }
+    })
+})
+
 
 app.listen(PORT,()=>console.log(`server is running on port ${PORT}`));
